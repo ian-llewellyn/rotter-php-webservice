@@ -40,8 +40,10 @@ echo '{
 
 // Per file output
 for ($i = 0; $i < count($dir_listing); $i++) {
-	preg_match('/^\d{4}-\d{2}-\d{2}-(\d{2}-\d{2}-\d{2})-\d{2}' . $recording_suffix . '$/', $dir_listing[$i], $matches);
-	$title = str_replace('-', ':', $matches[1]);
+	preg_match('/^(\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2})-\d{2}' . $recording_suffix . '$/', $dir_listing[$i], $matches);
+	list($year, $month, $day, $hour, $minute, $second) = explode('-', $matches[1]);
+	$time = mktime( $hour, $minute, $second, $month, $day, $year, 0 );
+	$title = date("H:i:s", $time);
 	echo '		{
 			"title":"' . $title . '",
 			"file":"' . $dir_listing[$i] . '",

@@ -1,3 +1,7 @@
+2011-07-22
+----------
+Added a UTC correction into the times that are returned by listfiles.php
+
 2011-07-08
 ----------
 Added readfile_chunked function.
