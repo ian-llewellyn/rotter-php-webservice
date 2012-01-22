@@ -1,35 +1,77 @@
 <?php
 
-// Include common configuration parameters
-require_once('common-config.php');
+// Is a callback function referenced?
+$callback = isset($_GET['callback']) ? $_GET['callback'] : ( isset($_POST['callback']) ? $_POST['callback'] : false );
 
-$dir_listing = scandir($rotter_base_dir);
-
-$i = 0;
-while ( $i < count($dir_listing) ) {
-	if ( preg_match('/^\./', $dir_listing[$i]) != 1 ) {
-		$i++;
-	} else {
-		array_splice($dir_listing, $i, 1);
-	}
+// Is there a callback?
+if ( $callback !== false ) {
+	echo $callback, '(';
 }
 
-// Begin Output
-echo '{
+?>{
 	"services":[
-';
+		{
+			"title":"RTÉ Radio 1 FM",
+			"id":"radio1"
+		},
+		{
+			"title":"RTÉ 2fm",
+			"id":"2fm"
+		},
+		{
+			"title":"RTÉ lyric fm",
+			"id":"lyricfm"
+		},
+		{
+			"title":"RTÉ Raidió na Gaeltachta",
+			"id":"rnag"
+		},
+		{
+			"title":"RTÉ Gold",
+			"id":"gold"
+		},
+		{
+			"title":"RTÉ 2XM",
+			"id":"2xm"
+		},
+		{
+			"title":"RTÉ Choice",
+			"id":"choice"
+		},
+		{
+			"title":"RTÉ Junior/Chill",
+			"id":"junior-chill"
+		},
+		{
+			"title":"RTÉ Pulse",
+			"id":"pulse"
+		},
+		{
+			"title":"RTÉ Radio 1 extra",
+			"id":"radio1extra"
+		},
+		{
+			"title":"RTÉ Radio 1 LW",
+			"id":"radio1lw"
+		},
+		{
+			"title":"Newstalk",
+			"id":"newstalk"
+		},
+		{
+			"title":"Today fm",
+			"id":"todayfm"
+		},
+		{
+			"title":"4fm",
+			"id":"spin1038"
+		}
+	]
+}<?php
 
-// Per file output
-for ($i = 0; $i < count($dir_listing); $i++) {
-	echo '		"' . $dir_listing[$i] . '"';
-	if ($i != count($dir_listing)-1) {
-		echo ',';
-	}
-	echo "\n";
+// Is there a callback?
+if ( $callback !== false ) {
+	echo ');';
 }
-
-// End output
-echo '	]
-}';
 
 ?>

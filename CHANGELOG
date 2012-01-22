@@ -1,3 +1,8 @@
+2011-08-12
+----------
+Reduced logging level in download API.
+Hacked listservices API in the absence of time to do it better.
+
 2011-07-22
 ----------
 Added a UTC correction into the times that are returned by listfiles.php
