@@ -9,9 +9,12 @@ $service = isset($_GET['service']) ? $_GET['service'] : ( isset($_POST['service'
 // Parse the date from the GET or POST variables
 $date = isset($_GET['date']) ? $_GET['date'] : ( isset($_POST['date']) ? $_POST['date'] : date('Y-m-d') );
 
+// Is a callback function referenced?
+$callback = isset($_GET['callback']) ? $_GET['callback'] : ( isset($_POST['callback']) ? $_POST['callback'] : false );
+
 // Get the directory listing and safely exit if there's a problem
 if ( ($dir_listing = scandir($rotter_base_dir . $service . '/' . $date)) === FALSE) die('{
-	files:[
+	"files":[
 	]
 }');
 
@@ -25,9 +28,14 @@ while ( $i < count($dir_listing) ) {
 	}
 }
 
+// Is there a callback?
+if ( $callback !== false ) {
+	echo $callback, '(';
+}
+
 // Begin Output
 echo '{
-	files:[
+	"files":[
 ';
 
 // Per file output
@@ -35,9 +43,9 @@ for ($i = 0; $i < count($dir_listing); $i++) {
 	preg_match('/^\d{4}-\d{2}-\d{2}-(\d{2}-\d{2}-\d{2})-\d{2}' . $recording_suffix . '$/', $dir_listing[$i], $matches);
 	$title = str_replace('-', ':', $matches[1]);
 	echo '		{
-			title:"' . $title . '",
-			file:"' . $dir_listing[$i] . '",
-			size:' . filesize($rotter_base_dir . $service . '/' . $date . '/' . $dir_listing[$i]) . '
+			"title":"' . $title . '",
+			"file":"' . $dir_listing[$i] . '",
+			"size":' . filesize($rotter_base_dir . $service . '/' . $date . '/' . $dir_listing[$i]) . '
 		}';
 	if ($i != count($dir_listing)-1) {
 		echo ',';
@@ -48,5 +56,11 @@ for ($i = 0; $i < count($dir_listing); $i++) {
 // End output
 echo '	]
 }';
+
+// Is there a callback?
+if ( $callback !== false ) {
+        echo ');';
+}
+
 
 ?>

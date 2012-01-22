@@ -1,0 +1,6 @@
+2011-07-08
+----------
+Added readfile_chunked function.
+Made other minor changes, including ones to common-config.php.
+Fixed JSON formatting errors in listfiles.php and listservices.php.
+Added JSONP callback parameter to listfiles.php.

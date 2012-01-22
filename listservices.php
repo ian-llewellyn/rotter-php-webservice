@@ -16,7 +16,7 @@ while ( $i < count($dir_listing) ) {
 
 // Begin Output
 echo '{
-	services:[
+	"services":[
 ';
 
 // Per file output
