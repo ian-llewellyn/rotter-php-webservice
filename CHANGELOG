@@ -1,3 +1,11 @@
+2011-11-15
+----------
+Created dst-test.php to diagnose DST problems
+
+The file higlights if the timezone setting in php.ini is set correctly.
+Also added a file_name input parameter to the download API for arbitrary download file titles.
+Added a test service into the hacked listservices API.
+
 2011-08-12
 ----------
 Reduced logging level in download API.

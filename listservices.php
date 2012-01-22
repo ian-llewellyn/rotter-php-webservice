@@ -64,7 +64,11 @@ if ( $callback !== false ) {
 		},
 		{
 			"title":"4fm",
-			"id":"spin1038"
+			"id":"4fm"
+		},
+		{
+			"title":"Test",
+			"id":"radio1test"
 		}
 	]
 }<?php
