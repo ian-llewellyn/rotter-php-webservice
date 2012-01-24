@@ -1,3 +1,5 @@
+rotter-web-service Readme
+=========================
 This article describes the rotter-web-service API and uses the following
 conventions: Code is presented in code blocks, mandatory input parameters are
 enclosed in angle brackets "<" and ">" and optional input parameters are
@@ -6,13 +8,15 @@ enclosed in square brackets "[" and "]".
 All input parameters can be either GET or POST variables. '''Unless otherwise
 stated, times are UTC.'''
 
-=== listservices.php: ===
+listservices.php:
+-----------------
 ; Service Description: Lists the services that can be queried through the various AudioFile Web Services
 
 ; Input Parameters: none required
 ; [callback]: JavaScript function name
 
 ; Returned Output: A JSON list of services in the format:
+```JSON
  {
  	"services":[
  		{
@@ -30,8 +34,10 @@ stated, times are UTC.'''
  		...
  	]
  }
+```
 
-=== listfiles.php: ===
+listfiles.php:
+--------------
 ; Service Description: Lists all of the files for a given service on a given date.
 
 ; Input Parameters
@@ -39,6 +45,7 @@ stated, times are UTC.'''
 ; <date>: in format "YYYY-MM-DD"
 
 ; Returned Output: A JSON list of files in the format:
+```JSON
  {
  	"files":[
  		{
@@ -53,10 +60,12 @@ stated, times are UTC.'''
  		}
  	]
  }
+```
 
 '''Note:''' The title field in the returned JSON is adjusted for daylight saving time.
 
-=== download.php: ===
+download.php:
+-------------
 ; Service Description: Produce a single file for download from the specified service between the start and end times specified.
 
 ; Input Parameters
